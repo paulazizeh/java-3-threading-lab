@@ -72,6 +72,15 @@ public class TransactionsReader implements Iterable<Transaction> {
             return false;
         }
 
+        public Transaction peek() {
+            try {
+                return ConvertTransaction.convert(csvReader.peek());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
         /**
          * Read the next transaction.
          * @return A {@link Transaction}, or null if one is not available.
